@@ -1,0 +1,66 @@
+---
+  import { Icon } from 'astro-icon/components';
+
+  import AboutMe from '../components/sections/AboutMe.astro';
+  import Contact from '../components/sections/Contact.astro';
+  import Experience from '../components/sections/Experience.astro';
+  import IconLink from '../components/IconLink.astro';
+  import LinkButton from '../components/LinkButton.astro';
+  import Layout from '../layouts/Layout.astro';
+  import Projects from '../components/sections/Projects.astro';
+
+  const METADATA = {
+    title: 'Michel Núñez - Prgramador y  Desarrollador Web',
+    description: '¡Hola! Bienvenido a mi portafolio web, mi nombre es Michel Núñez y soy programador y desarrollador web.'
+  }
+---
+
+<Layout title={METADATA.title} description={METADATA.description}>
+  <section class="bg-banner-background bg-cover bg-center min-h-screen flex flex-col items-center justify-center"
+    id="home">
+    <div class="space-y-8 py-20">
+      <img src="/img/profile/photo-1.jpg" alt="Profile" class="h-36 w-36 rounded-full mx-auto mt-8" height="100" width="100"
+        style={{ aspectRatio: "100/100" , objectFit: "cover" , }} />
+
+
+      <div class="px-6 space-y-4">
+        <h1 class="text-white text-4xl font-bold text-center">
+          Hola, soy Michel Núñez
+        </h1>
+        <p class="text-white text-xl text-center mx-auto max-w-lg">
+          Programador y desarrollador de aplicaciones web.
+        </p>
+      </div>
+
+      <div class="flex flex-row flex-wrap justify-center items-center gap-5">
+        <IconLink aria-label="linkedin" href="https://ve.linkedin.com/in/nsmichelj" target="_blank">
+          <Icon name="mdi:linkedin" class="text-[#0a66c2]" />
+        </IconLink>
+
+        <IconLink aria-label="twitter" href="https://twitter.com/nsmichelj" target="_blank">
+          <Icon name="square-x-twitter" class="text-[#14171A]" />
+        </IconLink>
+
+        <IconLink aria-label="github" href="https://github.com/nsmichelj" target="_blank">
+          <Icon name="mdi:github" class="text-[#333333]" />
+        </IconLink>
+      </div>
+
+        <div class="flex justify-center">
+          <LinkButton href="/#contact">Contáctame
+            <Icon name="mdi:arrow-down-bold-circle" class="text-xl" />
+          </LinkButton>
+        </div>
+      </div>
+
+  </section>
+
+  <AboutMe />
+
+  <Experience />
+
+  <Projects />
+
+  <Contact />
+
+</Layout>

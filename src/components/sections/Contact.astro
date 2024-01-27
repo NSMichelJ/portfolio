@@ -1,0 +1,171 @@
+---
+  import { Icon } from "astro-icon/components";
+
+  import Input from "../Input.astro";
+  import Label from "../Label.astro";
+  import SectionContainer from "../SectionContainer.astro"
+  import Select from "../Select.astro";
+  import SocialLink from "../SocialLink.astro";
+  import TextArea from "../TextArea.astro";
+---
+
+<SectionContainer title="Contacto" id="contact">
+
+  <div
+    class="hidden bottom-10 p-4 mb-4 text-sm text-blue-800 rounded-lg bg-blue-100 dark:bg-gray-800 dark:text-blue-400"
+    role="alert">
+    <span class="font-medium">Enviando mensaje...</span>
+  </div>
+
+  <Icon slot="icon" name="mdi:email-edit-outline" />
+  <div class="flex items-stretch justify-center">
+    <div class="grid md:grid-cols-2 gap-10">
+      <div class="h-full text-center md:text-start max-w-2xl sm:max-w-xl">
+
+        <p class="text-gray-800 mb-5 text-2xl font-semibold dark:text-gray-100">¿Tienes algo que decirme?</p>
+        <p class="mt-2 text-lg leading-8 text-gray-600 dark:text-gray-300">
+          Si te interesa mi perfil profesional y quieres contratarme para tu empresa o proyecto, puedes
+          contactarme
+          por el medio que más convenga. Te contestare en cuanto
+          pueda.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-2 md:justify-start justify-center my-6">
+
+          <SocialLink href="https://ve.linkedin.com/in/nsmichelj" target="_blank"
+            class="text-white bg-[#0A66C2] hover:bg-[#0A66C2]/90">
+            <Icon name="mdi:linkedin" class="text-2xl me-1" />
+            LinkedIn
+          </SocialLink>
+
+          <SocialLink href="https://twitter.com/nsmichelj" target="_blank"
+            class="text-white bg-[#14171A] hover:bg-[#14171A]/90 min-h-full">
+            <Icon name="x-twitter" class="text-2xl me-1" />
+            X/Twitter
+          </SocialLink>
+
+          <SocialLink href="mailto:nunezsalmeronm@gmail.com" target="_blank"
+            class="text-white bg-[#C71610] hover:bg-[#C71610]/90">
+            <Icon name="mdi:email-arrow-right-outline" class="text-2xl me-1" />
+            Email
+          </SocialLink>
+
+          <SocialLink href=" https://wa.me/584248201313" target="_blank"
+            class="text-white bg-[#075E54] hover:bg-[#075E54]/90">
+            <Icon name="mdi:whatsapp" class="text-2xl me-1" />
+            WhatsApp
+          </SocialLink>
+        </div>
+
+        <p class="mt-2 text-lg leading-8 text-gray-600 dark:text-gray-300">¡Estaré encantado de escuchar tus ideas
+          y
+          propuestas!</p>
+      </div>
+
+      <div class="card h-fit max-w-6xl">
+        <p class="text-gray-800 mb-5 text-2xl font-semibold dark:text-gray-100">¿Listo para empezar?</p>
+        <form id="contact-form">
+          <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+            <div>
+              <Label for="name">Nombre</Label>
+              <Input type="text" id="name" name="name" required />
+            </div>
+            <div>
+              <Label for="last_name">Apellido</Label>
+              <Input type="text" id="last_name" name="last_name" required />
+            </div>
+
+            <div class="sm:col-span-2">
+              <Label for="email">Email</Label>
+              <Input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="sm:col-span-2">
+              <Label for="subject">Asunto</Label>
+              <Select id="subject" name="subject" required>
+                <option value="">Selecciona un asunto</option>
+                <option value="Saludo">Quiero dejar un saludo</option>
+                <option value="Propuesta de trabajo">Tengo una propuesta de trabajo</option>
+                <option value="Recomendación">Quiero hacer una recomendación</option>
+                <option value="Otros">Otro asunto</option>
+              </Select>
+            </div>
+
+            <div class="sm:col-span-2">
+              <Label for="message">Mensaje</Label>
+              <TextArea name="message" label="Mensaje" rows={6} required
+                placeholder="Escribe tus comentarios, preguntas o sugerencias aquí. Procura ser claro y conciso para poder ayudarte de la mejor manera posible." />
+            </div>
+
+          </div>
+          <div class="mt-10">
+            <button type="submit"
+              class="gap-1 inline-flex items-center px-4 py-2 w-full text-center justify-center text-base font-medium text-white bg-mariner-700 rounded-lg hover:bg-mariner-700/90 focus:bg-mariner-800">Enviar
+              mensaje
+              <Icon id="icon" name="mdi:arrow-right-bold-circle" class="text-xl" />
+              <span id="spinner"
+                class="size-4 border-4 border-t-white border-b-white/50 border-l-white/50 border-r-white/50 rounded-full animate-spin"></span>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</SectionContainer>
+
+<style>
+  #spinner {
+    display: none;
+  }
+
+  button[type="submit"].loading>#icon {
+    display: none;
+  }
+
+  button[type="submit"].loading>#spinner {
+    display: block;
+  }
+</style>
+
+<script>
+  const formElement = document.querySelector('#contact-form');
+
+
+  formElement.addEventListener('submit', async e => {
+    try {
+      e.preventDefault();
+      e.submitter.classList.add('loading')
+
+      const formData = new FormData(formElement)
+
+      const res = await fetch('/api/send_mail', {
+        method: 'POST',
+        body: formData
+      })
+
+      if (res.ok) {
+        alert("Mensaje enviado con éxito", "success");
+        formElement.reset();
+      } else {
+        alert("Fallo el envió del mensaje", "error");
+      }
+    } catch (error) {
+      alert("Fallo el envió del mensaje", "error");
+    } finally {
+      e.submitter.classList.remove('loading');
+    }
+  });
+
+  const alert = (message, type) => {
+    const alert = document.createElement('div');
+    alert.className = `alert alert-${type}`;
+    alert.innerHTML = `<span>${message}<span>`;
+
+    document.body.appendChild(alert);
+    const timeout = setTimeout(() => {
+      alert.remove();
+      clearTimeout(timeout);
+    }, 3000);
+  }
+</script>

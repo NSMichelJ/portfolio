@@ -1,0 +1,50 @@
+---
+  import { Icon } from "astro-icon/components";
+  import LinkButton from "../LinkButton.astro";
+  import SectionContainer from "../SectionContainer.astro";
+
+---
+
+<SectionContainer title="Acerca de Michel" id="about-me">
+
+  <Icon slot="icon" name="mdi:account" />
+
+  <div class="">
+    <div class="flex flex-col-reverse items-center gap-10 md:flex-row">
+      <div class="[&>p]:mb-4 text-gray-600 text-lg leading-8 dark:text-gray-300">
+        <p>
+          Desde pequeño, siempre me ha fascinado el mundo de la tecnología. Recuerdo que me pasaba horas jugando
+          con mi computadora, tratando de entender cómo funcionaban las cosas. Con el tiempo, mi interés por la
+          programación se convirtió en una pasión.
+        </p>
+
+        <p>
+          A los 17 años, decidí comenzar mi formación profesional y actualmente soy Técnico Superior Universitario en
+          Informática (con honores). Durante mis estudios, desarrolle una aplicación web para la gestión del personal en
+          un hospital, además ayudaba a mis amigos con sus dudas y problemas de programación.
+        </p>
+
+        <p>
+          En mi poca experiencia profesional, he podido realizar prácticas como desarrollador web y he podido ayudar a
+          otras personas en el área de la programación, lo que me ha permitido trabajar en lo aprendido durante mi
+          carrera y desarrollar mis habilidades.
+        </p>
+      </div>
+
+      <div class="flex flex-col min-w-max space-y-4">
+        <img src="/img/profile/photo-2.jpg" alt="Profile" class="size-60 rounded-full mx-auto mx-auto" style={{
+          aspectRatio: "100/100" , objectFit: "cover" , }} />
+
+        <div class="flex justify-center">
+          <LinkButton href="https://drive.google.com/file/d/1_I7N0RcXRf-QFDYpNnXeOFhWVVma38ez/view?usp=sharing" target="_blank">
+            <Icon name="mdi:file-document" />
+            Descargar CV
+          </LinkButton>
+        </div>
+      </div>
+    </div>
+
+
+
+  </div>
+</SectionContainer>

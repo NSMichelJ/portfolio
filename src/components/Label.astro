@@ -1,0 +1,11 @@
+---
+    import type { HTMLAttributes } from 'astro/types';
+
+    interface Props extends HTMLAttributes<'label'> {
+    }
+
+---
+
+<label {...Astro.props} class="block text-sm font-medium leading-6 text-gray-900 mb-2 dark:text-gray-300">
+    <slot />
+</label>

@@ -1,0 +1,22 @@
+---
+  import { Icon } from "astro-icon/components";
+  import LinkButton from "../components/LinkButton.astro";
+import Layout from "../layouts/Layout.astro";
+
+---
+
+<Layout title="404 - página no encontrada" description="404 - página no encontrada"> 
+<main class="flex items-center justify-center min-h-screen place-items-center">
+    <div class="text-center py-16">
+      <Icon name="mdi:robot-confused-outline" class="mx-auto size-36 text-gray-900 dark:text-white" />
+      <p class="text-8xl font-black text-mariner-800 sm:text-9xl dark:text-mariner-700">404</p>
+      <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 sm:text-5xl dark:text-white">Página no encontrada</h1>
+      <p class="mt-6 text-lg leading-7 text-gray-500 dark:text-gray-400">Upss! Lo siento, no encontramos la página que está buscando.</p>
+      <div class="mt-10 flex items-center justify-center gap-x-6">
+        <LinkButton href="/">
+          Ir al inicio
+        </LinkButton>
+      </div>
+    </div>
+  </main>
+</Layout>
