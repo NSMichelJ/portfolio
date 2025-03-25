@@ -1,0 +1,31 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/forms";
+@plugin "@tailwindcss/typography";
+
+@theme {
+    --color-mariner-50: #edfaff;
+    --color-mariner-100: #d6f3ff;
+    --color-mariner-200: #b5ecff;
+    --color-mariner-300: #83e2ff;
+    --color-mariner-400: #48cfff;
+    --color-mariner-500: #1eb1ff;
+    --color-mariner-600: #0693ff;
+    --color-mariner-700: #0071e2;
+    --color-mariner-800: #0861c5;
+    --color-mariner-900: #0d549b;
+    --color-mariner-950: #0e335d;
+
+    --color-bunker-50: #f7f7f8;
+    --color-bunker-100: #eeeef0;
+    --color-bunker-200: #d9d9de;
+    --color-bunker-300: #b8b9c1;
+    --color-bunker-400: #91939f;
+    --color-bunker-500: #747583;
+    --color-bunker-600: #5e5f6b;
+    --color-bunker-700: #4c4d58;
+    --color-bunker-800: #42424a;
+    --color-bunker-900: #3a3a40;
+    --color-bunker-950: #19191c;
+
+    --background-image-banner-background: url('/img/banner-background.jpg')
+}
