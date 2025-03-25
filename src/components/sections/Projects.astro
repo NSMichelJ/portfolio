@@ -5,14 +5,14 @@
   import LinkButton from "../LinkButton.astro";
   import SectionContainer from "../SectionContainer.astro";
 
-  const projects = await Astro.glob('../../pages/projects/*.md')
+  const projects = Object.values(import.meta.glob('../../pages/projects/*.md', { eager: true }));
 ---
 
 <SectionContainer title="Proyectos" id="projects">
   <Icon slot="icon" name="mdi:code-block-braces" />
 
   <div class="grid gap-8 md:grid-cols-2">
-    {projects.map(({url, frontmatter}) => (
+    {projects.map(({url, frontmatter}: any) => (
     <article
       class="group rounded-lg bg-white border border-gray-100 dark:shadow-none dark:border-gray-700 dark:bg-gray-800 bg-opacity-50 shadow-2xl shadow-gray-600/10 ">
       <div class="relative overflow-hidden rounded-t-lg">

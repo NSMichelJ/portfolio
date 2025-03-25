@@ -6,8 +6,8 @@
 
   const { frontmatter, file } = Astro.props;
 
-  let projects = await Astro.glob('../pages/projects/*.md');
-  projects = projects.filter(project => project.file !== file);
+  let projects = Object.values(import.meta.glob('../pages/projects/*.md', { eager: true }));
+  projects = projects.filter((project: any) => project.file !== file);
 
 ---
 
@@ -36,14 +36,14 @@
     </div>
   </div>
 
-  { projects.length > 0 && (<aside aria-label="projects" class="mx-auto max-w-6xl px-4 py-14 px-6 lg:px-8">
+  { projects.length && (<aside aria-label="projects" class="mx-auto max-w-6xl px-4 py-14 px-6 lg:px-8">
     <div class="px-4">
       <h2 class="mb-8 text-2xl font-bold text-gray-900 dark:text-white">Otros proyectos</h2>
       <div class="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-        {projects.map(({url, frontmatter}) => (
+        {projects.map(({url, frontmatter}: any) => (
         <article class="max-w-xs">
           <a href={url}>
-            <img src={frontmatter.image.url} class="mb-5 rounded-lg" alt="Image 1">
+            <img src={frontmatter.image.url} class="mb-5 rounded-lg" alt="Image 1" />
           </a>
           <h2 class="mb-2 text-xl font-bold leading-tight text-gray-900 dark:text-white">
             <a href={url}>{frontmatter.title}</a>
