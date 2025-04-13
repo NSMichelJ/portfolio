@@ -10,6 +10,7 @@ technologies:
 urls:
   repo: "https://github.com/NSMichelJ/react-typewriter"
   demo: ""
+order: 9
 ---
 
 # react-typewriter: Librería para simular el efecto de máquina de escribir

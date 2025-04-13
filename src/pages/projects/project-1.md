@@ -9,6 +9,7 @@ technologies: ["Python", "Django", "Django REST framework", "Javascript", "Next.
 urls:
     repo: ''
     demo: ''
+order: 90
 ---
 
 # Aplicación web para la gestión de empleados

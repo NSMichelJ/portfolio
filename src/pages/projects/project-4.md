@@ -9,6 +9,7 @@ technologies: ["Python", "Django", "Django REST framework", "Javascript", "Boots
 urls:
     repo: ''
     demo: ''
+order: 100
 ---
 
 # Sistema de gestión de nómina

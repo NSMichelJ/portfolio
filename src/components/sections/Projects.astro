@@ -5,7 +5,10 @@
   import LinkButton from "../LinkButton.astro";
   import SectionContainer from "../SectionContainer.astro";
 
-  const projects = Object.values(import.meta.glob('../../pages/projects/*.md', { eager: true }));
+  let projects = Object.values(import.meta.glob('../../pages/projects/*.md', { eager: true }));
+  projects = projects.sort(
+    (a: any, b: any) => b.frontmatter?.order - a.frontmatter?.order
+  );
 ---
 
 <SectionContainer title="Proyectos" id="projects">

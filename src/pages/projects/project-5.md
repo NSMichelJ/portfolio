@@ -10,6 +10,7 @@ technologies:
 urls:
   repo: "https://github.com/NSMichelJ/ChromaticUI"
   demo: "https://chromaticui.vercel.app/"
+order: 80
 ---
 
 # ChromaticUI
