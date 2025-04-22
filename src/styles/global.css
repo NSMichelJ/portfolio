@@ -2,6 +2,7 @@
 @plugin "@tailwindcss/forms";
 @plugin "@tailwindcss/typography";
 
+@custom-variant dark (&:is(.dark *));
 @theme {
     --color-mariner-50: #edfaff;
     --color-mariner-100: #d6f3ff;
